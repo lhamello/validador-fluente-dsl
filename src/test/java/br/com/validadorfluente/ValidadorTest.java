@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class ValidadorTest {
@@ -43,6 +44,7 @@ public class ValidadorTest {
 	}
 	
 	@Test
+	@DisplayName("validar se um objeto string é maior que o esperado")
 	public void deveValidarSeUmObjetoStringMaiorQueEsperadoENaoNulo() {
 		String alvoTeste = "TESTE DE UM TEXTO MAIOR QUE O ESPERADO";
 		List<MensagemValidacao> validacoesRecebidas = Validador
