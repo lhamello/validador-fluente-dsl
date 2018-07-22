@@ -50,10 +50,41 @@ public class ValidadorTest {
 		List<MensagemValidacao> validacoesRecebidas = Validador
 													 .instance()
 													 .naoNulo(alvoTeste, StringUtils.EMPTY)
-													 .comTamanhoMenorOuIgualQue(alvoTeste, 10, "√â permitido no m√°ximo 10 caracteres.")
+													 .comTamanhoMenorOuIgualQue(alvoTeste, 10, "… permitido no m·ximo 10 caracteres.")
 													 .validar();
 		assertEquals(1, validacoesRecebidas.size());
 		assertEquals("√â permitido no m√°ximo 10 caracteres.", validacoesRecebidas.get(0).getMensagem());
 	}
 	
+	@Test
+	public void deveValidarUmValorVazio() {
+		String valorVazio = "";
+		List<MensagemValidacao> validacoesRecebidas = Validador.instance()
+				 												.naoNuloENaoVazio(valorVazio, "Informe um valor n„o nulo e n„o vazio para o atributo.")
+				 												.validar();
+		
+		assertEquals(1, validacoesRecebidas.size());
+		assertEquals("Informe um valor n„o nulo e n„o vazio para o atributo.", validacoesRecebidas.get(0).getMensagem());
+	}
+	
+	@Test
+	public void deveValidarUmValorNulo() {
+		String valorNulo = null;
+		List<MensagemValidacao> validacoesRecebidas = Validador.instance()
+				 												.naoNuloENaoVazio(valorNulo, "Informe um valor n„o nulo e n„o vazio para o atributo.")
+				 												.validar();
+		
+		assertEquals(1, validacoesRecebidas.size());
+		assertEquals("Informe um valor n„o nulo e n„o vazio para o atributo.", validacoesRecebidas.get(0).getMensagem());
+	}
+	
+	@Test
+	public void naoDeveTerMensagemDeValidacaoParaValorNaoVazioENaoNulo() {
+		String valorNaoNuloENaoVazio = "teste";
+		List<MensagemValidacao> validacoesRecebidas = Validador.instance()
+				 												.naoNuloENaoVazio(valorNaoNuloENaoVazio, "Informe um valor n„o nulo e n„o vazio para o atributo.")
+				 												.validar();
+		
+		assertEquals(0, validacoesRecebidas.size());
+	}
 }
