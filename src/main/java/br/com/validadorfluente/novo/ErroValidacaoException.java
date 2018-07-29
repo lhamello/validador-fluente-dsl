@@ -1,4 +1,4 @@
-package br.com.validadorfluente.generico;
+package br.com.validadorfluente.novo;
 
 public class ErroValidacaoException extends RuntimeException {
 
