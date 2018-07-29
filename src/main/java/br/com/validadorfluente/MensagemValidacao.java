@@ -2,8 +2,7 @@ package br.com.validadorfluente;
 
 public class MensagemValidacao {
 
-	private String atributo;
-
+	private String atributo; 
 	private String mensagem;
 
 	private MensagemValidacao(String mensagem) {
