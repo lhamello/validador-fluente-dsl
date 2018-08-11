@@ -1,9 +1,15 @@
 package br.com.validadorfluente.novo3;
 
-import java.util.List;
+abstract class Validacao {
 
-public interface Validacao {
+  protected final Object atributo;
+  protected final String nomeAtributo;
 
-  List<ErroValidacaoException> executar(final Object atributo, final String nomeAtributo);
+  public Validacao(final Object atributo, final String nomeAtributo) {
+    this.atributo = atributo;
+    this.nomeAtributo = nomeAtributo;
+  }
+
+  public abstract void executar();
 
 }

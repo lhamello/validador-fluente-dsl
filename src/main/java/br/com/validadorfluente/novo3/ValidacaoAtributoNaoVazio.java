@@ -1,13 +1,19 @@
 package br.com.validadorfluente.novo3;
 
-import java.util.List;
+class ValidacaoAtributoNaoVazio extends Validacao {
 
-class ValidacaoAtributoNaoVazio implements Validacao {
-
-  @Override
-  public List<ErroValidacaoException> executar(Object atributo, String nomeAtributo) {
-    // TODO Auto-generated method stub
-    return null;
+  public ValidacaoAtributoNaoVazio(final Object atributo, final String nomeAtributo) {
+    super(atributo, nomeAtributo);
   }
 
+  @Override
+  public void executar() {
+    if (atributo != null && atributo instanceof String) {
+      final String atributoParaValidar = (String) atributo;
+
+      if (atributoParaValidar.trim().isEmpty()) {
+        throw new ErroValidacaoException(String.format("%s não pode ficar em branco.", nomeAtributo));
+      }
+    }
+  }
 }
