@@ -2,6 +2,7 @@ package br.com.validadorfluente.novo2;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Validador {
 
@@ -94,5 +95,10 @@ public class Validador {
     if (!errosValidacao.isEmpty()) {
       throw new DominioException(classe, errosValidacao);
     }
+  }
+  
+  @SuppressWarnings("rawtypes")
+  public Validador somente(Predicate predicado) {
+    return this;
   }
 }
