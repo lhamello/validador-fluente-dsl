@@ -16,11 +16,11 @@ public class ValidadorDominioTest {
 	  final Integer idade = 32;
 	  
 	  final DominioInvalidoException excecao = assertThrows(DominioInvalidoException.class,
-	                                                       () -> ValidadorDominio.paraDominio(getClass())
+	                                                       () -> ValidadorEntidade.paraDominio(getClass())
 	                                                                             .comValidacoes(DeTexto.paraAtributo(nome, "Nome")
 	                                                                                                   .queNaoDeveSerNulo()
 	                                                                                                   .queNaoDeveSerVazio()
-	                                                                                                   .sempre())
+	                                                                                                   	)
 	                                                                             .comValidacoes(DeTexto.paraAtributo(sobrenome, "Sobrenome")
 	                                                                                                   .queNaoDeveSerNulo()
 	                                                                                                   .queNaoDeveSerVazio()

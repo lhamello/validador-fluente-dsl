@@ -12,11 +12,11 @@ abstract class Validacao<T> {
 
   public Validacao() {
     this.errosValidacao = new LinkedList<>();
+    this.aplicarValidacoes = true;
   }
 
   protected Validacao<T> executarValidacao(final Predicate<T> predicado, final T objeto, final String mensagemCasoErroValidacao) {
     try {
-
       if (!predicado.test(objeto)) {
         this.errosValidacao.add(mensagemCasoErroValidacao);
       }
@@ -26,11 +26,6 @@ abstract class Validacao<T> {
       excecao.printStackTrace();
     }
 
-    return this;
-  }
-
-  protected Validacao<T> sempre() {
-    this.aplicarValidacoes = true;
     return this;
   }
 
