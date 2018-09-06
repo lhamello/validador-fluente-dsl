@@ -11,6 +11,8 @@ import br.com.validadorfluente.DeInteiro;
 import br.com.validadorfluente.DeTexto;
 import br.com.validadorfluente.DominioInvalidoException;
 import br.com.validadorfluente.ValidadorDominio;
+import br.com.validadorfluente.versaofinal.teste.Pessoa;
+import br.com.validadorfluente.versaofinal.teste.PessoaTest;
 
 public class ValidadorDominioTest {
 
@@ -29,5 +31,8 @@ public class ValidadorDominioTest {
 		
 		List<String> mensagens = excecao.getMensagens();
 		assertThat("Deve ter 3 erros de validação (todos campos nulos).", mensagens.size(), equalTo(3));
+		
+		Pessoa pessoa = new Pessoa(null);
+		System.out.println(pessoa);
 	}
 }
