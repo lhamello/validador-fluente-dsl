@@ -33,4 +33,12 @@ public abstract class Validacao<T> {
   public List<ErroValidacaoException> getErrosValidacao() {
     return errosValidacao;
   }
+  
+  public Validacao<T> queNaoDeveSerNulo() {
+    return queNaoDeveSerNulo(String.format("%s é de preenchimento obrigatório.", nomeAtributo));
+  }
+
+  public Validacao<T> queNaoDeveSerNulo(final String mensagemErro) {
+    return this.executarValidacao(s -> s != null, atributo, mensagemErro);
+  }
 }
